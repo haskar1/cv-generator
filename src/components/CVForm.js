@@ -2,12 +2,12 @@ import Personal from "./Personal";
 import Experience from "./Experience";
 import Education from "./Education";
 
-export default function CVForm({ cv, setCV }) {
+export default function CVForm({ onItemChange, cv }) {
     return (
         <div>
-            <Personal cv={cv} setCV={setCV} />
-            <Experience cv={cv} setCV={setCV} />
-            <Education cv={cv} setCV={setCV} />
+            <Personal onItemChange={onItemChange} cv={cv} />
+            <Experience onItemChange={onItemChange} cv={cv} />
+            <Education onItemChange={onItemChange} cv={cv} />
         </div>
     )
 }

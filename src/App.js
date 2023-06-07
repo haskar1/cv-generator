@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import CVForm from './components/CVForm.js';
 import CVPreview from './components/CVPreview.js';
-import './style.css';
+import './styles.css';
 
 export default function App() {
   const [cv, setCV] = useState(initialCV);
+
+  function handleItemChange(e, name, category) {
+    setCV({
+        ...cv,
+        [category]: {
+            ...cv[category],
+            [name]: e.target.value
+        }
+    })
+}
 
   return (
     <div>
@@ -13,7 +23,7 @@ export default function App() {
       </header>
 
       <main>
-        <CVForm cv={cv} setCV={setCV} />
+        <CVForm onItemChange={handleItemChange} cv={cv} />
         <CVPreview />
       </main>
     </div>

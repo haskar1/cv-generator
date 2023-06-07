@@ -1,42 +1,28 @@
-import { useState } from "react";
-
 function TextInput({ 
     type, 
     label, 
     name, 
-    category, 
-    cv, 
-    setCV,
-    isTextarea
+    category,
+    isTextarea,
+    onItemChange,
+    cv
 }) {
-    const [value, setValue] = useState('');
-    let className = value && 'filled';
+    const value = cv[category][name];
+    let className = value ? 'filled' : "";
 
     if (type === "date") {
         className = 'filled';
     }
 
-    function handleChange(e) {
-        setValue(e.target.value);
-        setCV({
-            ...cv,
-            [category]: {
-                ...cv[category],
-                [name]: e.target.value
-            }
-        })
-    }
-
     return (
         <div className="input-container">
-            {isTextarea 
-                ? <textarea value={value} name={name} category={category} onChange={handleChange}></textarea>
-                : <input type={type} value={value} name={name} category={category} onChange={handleChange} />
-            }
+            {isTextarea ? (
+                <textarea value={value} name={name} category={category} onChange={(e) => onItemChange(e, name, category)}></textarea>
+            ) : (
+                <input type={type} value={value} name={name} category={category} onChange={(e) => onItemChange(e, name, category)} />
+            )}
             
-            <label className={className}>
-                {label}
-            </label>
+            <label className={className}>{label}</label>
         </div>
     );
 }
