@@ -1,11 +1,32 @@
+import { useState } from 'react';
+import CVForm from './components/CVForm.js';
+import CVPreview from './components/CVPreview.js';
+import './style.css';
 
+export default function App() {
+  const [cv, setCV] = useState(initialCV);
 
-function App() {
   return (
     <div>
+      <header>
+        <h1>CV Generator</h1>
+      </header>
 
+      <main>
+        <CVForm cv={cv} setCV={setCV} />
+        <CVPreview />
+      </main>
     </div>
   );
 }
 
-export default App;
+const initialCV = {
+  personalInformation: {
+    firstName: '',
+    lastName: '',
+    address: '',
+    phone: '',
+    email: '',
+    description: ''
+  }
+}
