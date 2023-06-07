@@ -10,6 +10,11 @@ function TextInput({
     isTextarea
 }) {
     const [value, setValue] = useState('');
+    let className = value && 'filled';
+
+    if (type === "date") {
+        className = 'filled';
+    }
 
     function handleChange(e) {
         setValue(e.target.value);
@@ -29,7 +34,7 @@ function TextInput({
                 : <input type={type} value={value} name={name} category={category} onChange={handleChange} />
             }
             
-            <label className={value && 'filled'}>
+            <label className={className}>
                 {label}
             </label>
         </div>

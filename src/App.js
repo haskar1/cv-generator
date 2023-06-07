@@ -28,5 +28,21 @@ const initialCV = {
     phone: '',
     email: '',
     description: ''
+  }, 
+  experience: {
+    company: '',
+    position: '',
+    education: '',
+    fromDate: '',
+    toDate: '',
+    description: ''
+  }, 
+  education: {
+    university: '',
+    degree: '',
+    subject: '',
+    location: '',
+    fromDate: '',
+    toDate: ''
   }
 }
