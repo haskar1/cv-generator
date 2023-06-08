@@ -1,30 +1,47 @@
-function TextInput({ 
-    type, 
-    label, 
-    name, 
-    category,
-    isTextarea,
-    onItemChange,
-    cv
+function TextInput({
+  type,
+  label,
+  name,
+  category,
+  isTextarea,
+  onChangePersonal,
+  onChangeExperienceOrEducation,
+  id,
+  value
 }) {
-    const value = cv[category][name];
-    let className = value ? 'filled' : "";
+  let className;
+  if (value !== "" || type === "date") {
+    className = "filled";
+  }
 
-    if (type === "date") {
-        className = 'filled';
-    }
+  return (
+    <div className="input-container">
+      {isTextarea ? (
+        <textarea
+          value={value}
+          name={name}
+          category={category}
+          onChange={category === "personalInformation" ? (
+                  (e) => onChangePersonal(e, name, category) 
+            ) : ( (e) => onChangeExperienceOrEducation(e, id, name, category)
+          )}
+        ></textarea>
+      ) : (
+        <input
+          type={type}
+          value={value}
+          name={name}
+          category={category}
+          onChange={category === "personalInformation" ? (
+                  (e) => onChangePersonal(e, name, category) 
+            ) : ( (e) => onChangeExperienceOrEducation(e, id, name, category)
+          )}
+        />
+      )}
 
-    return (
-        <div className="input-container">
-            {isTextarea ? (
-                <textarea value={value} name={name} category={category} onChange={(e) => onItemChange(e, name, category)}></textarea>
-            ) : (
-                <input type={type} value={value} name={name} category={category} onChange={(e) => onItemChange(e, name, category)} />
-            )}
-            
-            <label className={className}>{label}</label>
-        </div>
-    );
+      <label className={className}>{label}</label>
+    </div>
+  );
 }
 
 export default TextInput;
