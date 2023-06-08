@@ -7,7 +7,7 @@ export default function Education({ cv, onChangePersonal, onChangeExperienceOrEd
       <form>
         {cv.education.map(educationItem => {
           return (
-            <div>
+            <div key={educationItem.id}>
               <TextInput
                 type="text"
                 label="University"
@@ -73,10 +73,10 @@ export default function Education({ cv, onChangePersonal, onChangeExperienceOrEd
                 value={educationItem.toDate}
 
               />
+              <Button value="Delete" category="education" id={educationItem.id} onButtonClick={onDeleteClick} />
             </div>
           )
         })}
-        <Button value="Delete" onButtonClick={onDeleteClick} />
         <Button value="Add" category="education" onButtonClick={onAddClick} />
       </form>
     </div>

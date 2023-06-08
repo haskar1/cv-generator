@@ -7,7 +7,7 @@ export default function Experience({ cv, onChangePersonal, onChangeExperienceOrE
       <form>
         {cv.experience.map(experienceItem => {
           return (
-            <div>
+            <div key={experienceItem.id}>
               <TextInput
                 type="text"
                 label="Company"
@@ -68,10 +68,10 @@ export default function Experience({ cv, onChangePersonal, onChangeExperienceOrE
                 id={experienceItem.id}
                 value={experienceItem.description}
               />
+              <Button value="Delete" category="experience" id={experienceItem.id} onButtonClick={onDeleteClick} />
             </div>
           )
         })}
-        <Button value="Delete" onButtonClick={onDeleteClick} />
         <Button value="Add" category="experience" onButtonClick={onAddClick} />
       </form>
     </div>

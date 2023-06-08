@@ -59,8 +59,15 @@ export default function App() {
     });
   }
 
-  function handleDeleteClick(e) {
+  function handleDeleteClick(e, category, id) {
     e.preventDefault();
+    const newCategory = cv[category].filter(categoryItem => {
+      return categoryItem.id !== id;
+    });
+    setCV({
+      ...cv,
+      [category]: newCategory
+    });
   }
 
   return (
@@ -77,7 +84,7 @@ export default function App() {
           onAddClick={handleAddClick} 
           onDeleteClick={handleDeleteClick} 
         />
-        <CVPreview />
+        <CVPreview cv={cv} />
       </main>
     </div>
   );
