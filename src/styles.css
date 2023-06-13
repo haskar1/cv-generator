@@ -9,20 +9,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
   margin: 0;
+  padding: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -41,7 +29,6 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.9rem;
 }
 
@@ -81,28 +68,124 @@ select {
   }
 }
 
+
+
+/***************
+  GLOBAL STYLES
+ ***************/
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  --primary-color: rgb(238, 238, 238);
+  --secondary-color: whitesmoke;
+  --dark-blue: rgb(20, 62, 114);
+  --btn-primary: rgb(51, 51 ,51);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+button {
+  background-color: var(--btn-primary);
+  color: var(--primary-color);
+}
+
+button:hover {
+  background-color: rgb(97, 97, 97);
+}
+
+
+
 /***************
       HEADER
  ***************/
 
 header {
-  background-color: aliceblue;
-  padding: 1rem 3rem;
+  background-color: var(--btn-primary);
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  padding: 0.5rem 3rem;
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+
+/***************
+      CV
+ ***************/
+
+.cv-form, 
+.cv-preview {
+  background-color: var(--primary-color);
+  margin: 0 auto;
+  width: 95%;
+  max-width: 40rem;
+}
+
+.cv-form {
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+
+.cv-preview {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: min-content auto;
+  height: min-content;
+  min-height: 60rem;
+}
+
+.cv-preview-title {
+  grid-column-end: span 2;
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-blue);
+  color: var(--primary-color);
+  font-size: 1.4rem;
+}
+
+.cv-preview-main {
+  padding: 2rem;
+  background-color: var(--secondary-color);
+}
+
+.cv-preview-sidebar {
+  padding: 2rem;
+}
+
+.cv-preview h3 {
+  color: var(--dark-blue);
+}
+
+.cv-form-photo-selector {
+  display: flex;
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 84em) {
+  main {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .cv-form, 
+  .cv-preview {
+    margin: 0;
+  }
 }
 
 /***************
-    FORM INPUTS
+   FORM INPUTS
  ***************/
-
+ 
 form {
-  background-color: #ddd;
-  padding: 2rem;
-  max-width: 30rem;
   display: grid;
-  grid-template-columns: 1fr;
   gap: 0.5rem;
-  outline: 1px solid red;
+  margin-bottom: 1rem;
 }
 
 /* Input style */
@@ -157,3 +240,4 @@ form {
 .input-container textarea:focus {
   box-shadow: 0 0 0 2px #79b1ff;
 }
+

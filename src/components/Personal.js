@@ -1,10 +1,10 @@
+import PhotoInput from "./PhotoInput.js";
 import TextInput from "./TextInput.js";
 
-export default function Personal({ cv, onChangePersonal }) {
+export default function Personal({ cv, onChangePersonal, onChangePhoto }) {
   return (
     <div>
       <form>
-        <h2>Personal Information</h2>
         <TextInput
           type="text"
           label="First Name"
@@ -44,6 +44,10 @@ export default function Personal({ cv, onChangePersonal }) {
           category="personalInformation"
           onChangePersonal={onChangePersonal} 
           value={cv.personalInformation.email}
+        />
+        <PhotoInput 
+          onChangePhoto={onChangePhoto} 
+          photoFile={cv.personalInformation.photoFile}
         />
         <TextInput
           isTextarea={true}

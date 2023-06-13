@@ -2,12 +2,14 @@ import Personal from "./Personal";
 import Experience from "./Experience";
 import Education from "./Education";
 
-export default function CVForm({ cv, onChangePersonal, onChangeExperienceOrEducation, onAddClick, onDeleteClick }) {
+export default function CVForm({ cv, onChangePersonal, onChangePhoto, onChangeExperienceOrEducation, onAddClick, onDeleteClick }) {
   return (
-    <div>
+    <div className="cv-form">
+      <h2>Personal Information</h2>
       <Personal 
         cv={cv} 
         onChangePersonal={onChangePersonal} 
+        onChangePhoto={onChangePhoto}
       />
       <h2>Experience</h2>
       <Experience 

@@ -20,9 +20,8 @@ function TextInput({
         <textarea
           value={value}
           name={name}
-          category={category}
           onChange={category === "personalInformation" ? (
-                  (e) => onChangePersonal(e, name, category) 
+                  (e) => onChangePersonal(e, name) 
             ) : ( (e) => onChangeExperienceOrEducation(e, id, name, category)
           )}
         ></textarea>
@@ -33,7 +32,7 @@ function TextInput({
           name={name}
           category={category}
           onChange={category === "personalInformation" ? (
-                  (e) => onChangePersonal(e, name, category) 
+                  (e) => onChangePersonal(e, name) 
             ) : ( (e) => onChangeExperienceOrEducation(e, id, name, category)
           )}
         />

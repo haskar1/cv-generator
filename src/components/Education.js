@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Button from "./Button.js";
 import TextInput from "./TextInput.js";
 
@@ -7,7 +8,7 @@ export default function Education({ cv, onChangePersonal, onChangeExperienceOrEd
       <form>
         {cv.education.map(educationItem => {
           return (
-            <div key={educationItem.id}>
+            <Fragment key={educationItem.id}>
               <TextInput
                 type="text"
                 label="University"
@@ -74,7 +75,7 @@ export default function Education({ cv, onChangePersonal, onChangeExperienceOrEd
 
               />
               <Button value="Delete" category="education" id={educationItem.id} onButtonClick={onDeleteClick} />
-            </div>
+            </Fragment>
           )
         })}
         <Button value="Add" category="education" onButtonClick={onAddClick} />

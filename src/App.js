@@ -2,19 +2,38 @@ import { useState } from "react";
 import CVForm from "./components/CVForm.js";
 import CVPreview from "./components/CVPreview.js";
 import "./styles.css";
+import emptyProfilePic from "./img/empty-profile-pic.png";
 
 
 export default function App() {
   const [cv, setCV] = useState(initialCV);
 
-  function handleChangePersonal(e, name, category) {
+  function handleChangePersonal(e, name) {
     setCV({
       ...cv,
-      [category]: {
-        ...cv[category],
-        [name]: e.target.value,
-      },
+      personalInformation: {
+        ...cv.personalInformation,
+        [name]: e.target.value
+      }
     });
+  }
+
+  function handleChangePhoto(e) {
+    const imgFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setCV({
+        ...cv,
+        personalInformation: {
+          ...cv.personalInformation,
+          photoFile: imgFile,
+          photoURL: e.target.result
+        }
+      });
+    }
+    if (imgFile) {
+      reader.readAsDataURL(imgFile);
+    }
   }
 
   function handleChangeExperienceOrEducation(e, id, name, category) {
@@ -80,6 +99,7 @@ export default function App() {
         <CVForm 
           cv={cv} 
           onChangePersonal={handleChangePersonal} 
+          onChangePhoto={handleChangePhoto}
           onChangeExperienceOrEducation={handleChangeExperienceOrEducation}
           onAddClick={handleAddClick} 
           onDeleteClick={handleDeleteClick} 
@@ -97,6 +117,8 @@ const initialCV = {
     address: "",
     phone: "",
     email: "",
+    photoFile: "",
+    photoURL: emptyProfilePic,
     description: ""
   },
   experience: [
