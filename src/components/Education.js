@@ -2,7 +2,13 @@ import { Fragment } from "react";
 import Button from "./Button.js";
 import TextInput from "./TextInput.js";
 
-export default function Education({ cv, onChangePersonal, onChangeExperienceOrEducation, onAddClick, onDeleteClick }) {
+export default function Education({ 
+  cv, 
+  onChangePersonal, 
+  onChangeExperienceOrEducation, 
+  onAddClick, 
+  onDeleteClick 
+}) {
   return (
     <div>
       <form>

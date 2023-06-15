@@ -89,10 +89,15 @@ select {
 button {
   background-color: var(--btn-primary);
   color: var(--primary-color);
+  height: min-content;
 }
 
 button:hover {
   background-color: rgb(97, 97, 97);
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 
@@ -241,3 +246,6 @@ form {
   box-shadow: 0 0 0 2px #79b1ff;
 }
 
+.input-container input[type="date"] {
+  background-color: white;
+}

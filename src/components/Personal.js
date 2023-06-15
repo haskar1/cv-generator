@@ -1,7 +1,13 @@
 import PhotoInput from "./PhotoInput.js";
 import TextInput from "./TextInput.js";
 
-export default function Personal({ cv, onChangePersonal, onChangePhoto, onHiddenInputClick, inputPhotoRef }) {
+export default function Personal({ 
+  cv, 
+  onChangePersonal, 
+  onChangePhoto, 
+  onHiddenInputClick, 
+  inputPhotoRef 
+}) {
   return (
     <div>
       <form>

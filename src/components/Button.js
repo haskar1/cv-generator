@@ -1,5 +1,11 @@
-export default function Button({ value, category, id, onButtonClick }) {
+export default function Button({ 
+    value, 
+    category, 
+    id, 
+    onButtonClick, 
+    className 
+}) {
     return (
-        <button onClick={(e) => onButtonClick(e, category, id)}>{value}</button>
+        <button className={className} onClick={(e) => onButtonClick(e, category, id)}>{value}</button>
     )
 }

@@ -1,9 +1,14 @@
 import Button from "./Button";
 
-export default function PhotoInput({ onChangePhoto, onHiddenInputClick, inputPhotoRef, photoFile }) {
+export default function PhotoInput({ 
+  onChangePhoto, 
+  onHiddenInputClick, 
+  inputPhotoRef, 
+  photoFile 
+}) {
   return (
     <div className="cv-form-photo-selector">
-      <p>Profile Picture: </p>
+      <p className="nowrap">Profile Picture: </p>
       <input 
         ref={inputPhotoRef}
         type="file"
@@ -12,7 +17,7 @@ export default function PhotoInput({ onChangePhoto, onHiddenInputClick, inputPho
         hidden
         onChange={onChangePhoto} 
       />
-      <Button value="Choose Photo" onButtonClick={onHiddenInputClick} />
+      <Button className="nowrap" value="Choose Photo" onButtonClick={onHiddenInputClick} />
       <p>{photoFile.name}</p>
     </div>
   )
