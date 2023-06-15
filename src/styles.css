@@ -90,10 +90,13 @@ button {
   background-color: var(--btn-primary);
   color: var(--primary-color);
   height: min-content;
+  border: none;
+  border-radius: 8px;
+  padding: .5em 1.5em;
 }
 
 button:hover {
-  background-color: rgb(97, 97, 97);
+  opacity: .8;
 }
 
 .nowrap {
@@ -124,14 +127,13 @@ header {
 .cv-form, 
 .cv-preview {
   background-color: var(--primary-color);
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   width: 95%;
   max-width: 40rem;
 }
 
 .cv-form {
   padding: 2rem;
-  margin-bottom: 4rem;
 }
 
 .cv-preview {
@@ -169,6 +171,23 @@ header {
 .cv-form-photo-selector {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+.cv-form-photo-selector > p {
+  height: min-content;
+}
+
+.print-btn {
+  background-color: rgb(27, 161, 72);
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.reset-btn {
+  background-color: rgb(179, 33, 30);
+  width: 100%;
 }
 
 @media only screen and (min-width: 84em) {
@@ -177,9 +196,9 @@ header {
     justify-content: space-evenly;
   }
 
-  .cv-form, 
   .cv-preview {
-    margin: 0;
+    position: sticky;
+    top: 1rem;
   }
 }
 
@@ -189,6 +208,7 @@ header {
  
 form {
   display: grid;
+  grid-template-columns: 100%;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -246,6 +266,8 @@ form {
   box-shadow: 0 0 0 2px #79b1ff;
 }
 
-.input-container input[type="date"] {
+/* Changes iOS default date input's background from gray to white */
+input[type="date"] {
   background-color: white;
 }
+

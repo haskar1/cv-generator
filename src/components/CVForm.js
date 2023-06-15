@@ -1,6 +1,7 @@
 import Personal from "./Personal";
 import Experience from "./Experience";
 import Education from "./Education";
+import Button from "./Button";
 
 export default function CVForm({ 
   cv, 
@@ -10,7 +11,9 @@ export default function CVForm({
   inputPhotoRef, 
   onChangeExperienceOrEducation, 
   onAddClick, 
-  onDeleteClick 
+  onDeleteClick,
+  onReset,
+  onPrint
 }) {
   return (
     <div className="cv-form">
@@ -38,6 +41,10 @@ export default function CVForm({
         onAddClick={onAddClick} 
         onDeleteClick={onDeleteClick} 
       />
+      <div>
+        <Button className="print-btn" value="Create PDF" onButtonClick={onPrint} />
+        <Button className="reset-btn" value="Reset" onButtonClick={onReset} />
+      </div>
     </div>
   );
 }

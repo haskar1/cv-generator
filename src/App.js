@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
 import CVForm from "./components/CVForm.js";
-import CVPreview from "./components/CVPreview.js";
+import { CVPreview } from "./components/CVPreview.js";
 import "./styles.css";
 import emptyProfilePic from "./img/empty-profile-pic.png";
 
@@ -8,6 +9,7 @@ import emptyProfilePic from "./img/empty-profile-pic.png";
 export default function App() {
   const [cv, setCV] = useState(initialCV);
   const inputPhotoRef = useRef(null);
+  const CVPreviewRef = useRef();
 
   function handleChangePersonal(e, name) {
     setCV({
@@ -97,6 +99,15 @@ export default function App() {
     });
   }
 
+  function handleReset(e) {
+    e.preventDefault();
+    setCV(initialCV);
+  }
+
+  const handlePrint = useReactToPrint({
+    content: () => CVPreviewRef.current,
+  });  
+  
   return (
     <div>
       <header>
@@ -106,15 +117,17 @@ export default function App() {
       <main>
         <CVForm 
           cv={cv} 
+          inputPhotoRef={inputPhotoRef}
           onChangePersonal={handleChangePersonal} 
           onChangePhoto={handleChangePhoto}
           onHiddenInputClick={handleHiddenInputClick}
-          inputPhotoRef={inputPhotoRef}
           onChangeExperienceOrEducation={handleChangeExperienceOrEducation}
           onAddClick={handleAddClick} 
           onDeleteClick={handleDeleteClick} 
+          onReset={handleReset}
+          onPrint={handlePrint}
         />
-        <CVPreview cv={cv} />
+        <CVPreview cv={cv} ref={CVPreviewRef} />
       </main>
     </div>
   );
