@@ -13,10 +13,12 @@ export default function CVPreview({ cv }) {
       <div className="cv-preview-main">
         <div>
           <h3>Description</h3>
+          <hr/>
           <p>{personal.description}</p>
         </div>
         <div>
           <h3>Experience</h3>
+          <hr/>
           {experiences.map(experience => {
             return (
               <div key={experience.id}>
@@ -31,6 +33,7 @@ export default function CVPreview({ cv }) {
         </div>
         <div>
           <h3>Education</h3>
+          <hr/>
           {educations.map(education => {
             return (
               <div key={education.id}>

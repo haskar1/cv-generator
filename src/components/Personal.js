@@ -1,7 +1,7 @@
 import PhotoInput from "./PhotoInput.js";
 import TextInput from "./TextInput.js";
 
-export default function Personal({ cv, onChangePersonal, onChangePhoto }) {
+export default function Personal({ cv, onChangePersonal, onChangePhoto, onHiddenInputClick, inputPhotoRef }) {
   return (
     <div>
       <form>
@@ -47,6 +47,8 @@ export default function Personal({ cv, onChangePersonal, onChangePhoto }) {
         />
         <PhotoInput 
           onChangePhoto={onChangePhoto} 
+          onHiddenInputClick={onHiddenInputClick}
+          inputPhotoRef={inputPhotoRef}
           photoFile={cv.personalInformation.photoFile}
         />
         <TextInput

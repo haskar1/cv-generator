@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CVForm from "./components/CVForm.js";
 import CVPreview from "./components/CVPreview.js";
 import "./styles.css";
@@ -7,6 +7,7 @@ import emptyProfilePic from "./img/empty-profile-pic.png";
 
 export default function App() {
   const [cv, setCV] = useState(initialCV);
+  const inputPhotoRef = useRef(null);
 
   function handleChangePersonal(e, name) {
     setCV({
@@ -16,6 +17,13 @@ export default function App() {
         [name]: e.target.value
       }
     });
+  }
+
+  function handleHiddenInputClick(e) {
+    e.preventDefault();
+    if (inputPhotoRef.current) {
+      inputPhotoRef.current.click();
+    }
   }
 
   function handleChangePhoto(e) {
@@ -100,6 +108,8 @@ export default function App() {
           cv={cv} 
           onChangePersonal={handleChangePersonal} 
           onChangePhoto={handleChangePhoto}
+          onHiddenInputClick={handleHiddenInputClick}
+          inputPhotoRef={inputPhotoRef}
           onChangeExperienceOrEducation={handleChangeExperienceOrEducation}
           onAddClick={handleAddClick} 
           onDeleteClick={handleDeleteClick} 
